@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 // Icons
@@ -53,15 +52,15 @@ function Cover(): JSX.Element {
     <Main>
       <img src="/avatar.png" alt="avatar" />
       <section>
-        <Link to="https://ig.mirumo.org">
+        <a href="https://ig.mirumo.org">
           <img src={githubIcon} />
-        </Link>
-        <Link to="https://github.mirumo.org">
+        </a>
+        <a href="https://github.mirumo.org">
           <img src={instagramIcon} />
-        </Link>
-        <Link to="https://tg.mirumo.org">
+        </a>
+        <a href="https://tg.mirumo.org">
           <img src={telegramIcon} />
-        </Link>
+        </a>
       </section>
     </Main>
   );
