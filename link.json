@@ -1,0 +1,49 @@
+{
+  "sections": [
+    {
+      "title": "NPTU CSAI",
+      "links": [
+        {
+          "label": "系學會網站",
+          "url": "https://nptucsai.org",
+          "iat": 0,
+          "exp": 0
+        },
+        {
+          "label": "網路實驗室",
+          "url": "https://netlab.nptucsai.org",
+          "iat": 0,
+          "exp": 0
+        }
+      ]
+    },
+    {
+      "title": "NPTU MDM",
+      "links": [
+        {
+          "label": "[行流][python] Slide Index",
+          "href": "https://hackmd.io/@mdm/HJD6_Xfyq",
+          "iat": 0,
+          "exp": 0
+        },
+        {
+          "label": "[行流][商務數據分析] Slide Index",
+          "url": "https://hackmd.io/@mdm/Syj7pvt3c",
+          "iat": 0,
+          "exp": 0
+        }
+      ]
+    },
+    {
+      "title": "NPTU CCS",
+      "links": [
+        {
+          "label": "110年度智慧創新跨域人才培育聯盟計畫(Arduino) II",
+          "url": "https://mirumo.org/slide/arduino/2021-12-06.pdf",
+          "iat": 0,
+          "exp": 0
+        }
+      ]
+    }
+  ]
+}
