@@ -1,0 +1,25 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: main
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the repo
+        uses: actions/checkout@v3
+      - name: setup env
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+      - name: install yarn packages
+        run: yarn
+      - name: build react app
+        run: yarn build
+      - name: push to gh-page
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist
+          force_orphan: true
