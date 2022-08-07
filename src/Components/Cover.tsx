@@ -52,10 +52,10 @@ function Cover(): JSX.Element {
     <Main>
       <img src="/avatar.png" alt="avatar" />
       <section>
-        <a href="https://ig.mirumo.org">
+        <a href="https://github.mirumo.org">
           <img src={githubIcon} />
         </a>
-        <a href="https://github.mirumo.org">
+        <a href="https://ig.mirumo.org">
           <img src={instagramIcon} />
         </a>
         <a href="https://tg.mirumo.org">
