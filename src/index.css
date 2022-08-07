@@ -9,4 +9,5 @@ body {
   border: 0;
 
   font-family: var(--font-family);
+  overflow-x: hidden;
 }
