@@ -6,6 +6,7 @@ import Home from './Pages/Home';
 import About from './Pages/About';
 import Link from './Pages/Link';
 import Tools from './Pages/Tools';
+import ScreenMessage from './Pages/ScreenMessage';
 
 function App(): JSX.Element {
   return (
@@ -15,6 +16,7 @@ function App(): JSX.Element {
         <Route path="/about" element={<About />} />
         <Route path="/link" element={<Link />} />
         <Route path="/tools" element={<Tools />} />
+        <Route path="/sm" element={<ScreenMessage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -29,7 +29,7 @@ function Tools(): JSX.Element {
     <Main>
       <h1>Tools</h1>
       <GridSection>
-        <IconLink text="Screen Message" Icon={MdEditNote} to="#" />
+        <IconLink text="Screen Message" Icon={MdEditNote} to="/sm" />
         <IconLink text="QRcode" Icon={MdQrCode} to="#" />
         <IconLink text="Random" Icon={GiPerspectiveDiceSixFacesRandom} to="#" />
         <IconLink text="Markdown" Icon={BsMarkdown} to="#" />
