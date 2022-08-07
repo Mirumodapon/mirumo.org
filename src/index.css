@@ -1,0 +1,15 @@
+:root {
+  /* default font family */
+  --font-family: sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vw;
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  font-family: var(--font-family);
+}
