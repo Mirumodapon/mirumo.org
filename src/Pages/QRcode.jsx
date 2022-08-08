@@ -6,6 +6,9 @@ import { Routes, Route, NavLink as Link } from 'react-router-dom';
 import QRcodeGenerate from '../Components/QRcodeGenerate';
 import QRcodeScanner from '../Components/QRcodeScanner';
 
+// Icons
+import { AiOutlineQrcode, AiOutlineCamera } from 'react-icons/ai';
+
 // styled
 const Main = styled.main`
   width: 80%;
@@ -15,8 +18,9 @@ const Main = styled.main`
     align-items: center;
     padding: 10px;
     border-bottom: 0.5px solid black;
+    font-size: 28px;
     section {
-      margin: 0 12px;
+      margin: 0 18px;
       display: flex;
       align-items: flex-end;
       flex-wrap: wrap;
@@ -27,7 +31,7 @@ const Main = styled.main`
       color: inherit;
       text-decoration: none;
       font-weight: normal;
-      font-size: 18px;
+      font-size: 32px;
     }
   }
 `;
@@ -38,8 +42,12 @@ function QRcode() {
       <h1>
         QRcode
         <section>
-          <Link to="/qr/g">Generate</Link>
-          <Link to="/qr/s">Scanner</Link>
+          <Link to="/qr/g">
+            <AiOutlineQrcode />
+          </Link>
+          <Link to="/qr/s">
+            <AiOutlineCamera />
+          </Link>
         </section>
       </h1>
 
