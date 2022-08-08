@@ -7,6 +7,7 @@ import About from './Pages/About';
 import Link from './Pages/Link';
 import Tools from './Pages/Tools';
 import ScreenMessage from './Pages/ScreenMessage';
+import QRcode from './Pages/QRcode';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/link" element={<Link />} />
         <Route path="/tools" element={<Tools />} />
         <Route path="/sm" element={<ScreenMessage />} />
+        <Route path="/qr/*" element={<QRcode />} />
       </Routes>
     </BrowserRouter>
   );
