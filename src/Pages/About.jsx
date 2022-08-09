@@ -4,6 +4,21 @@ import styled from 'styled-components';
 // Components
 import { Section, P, Ul, H1, Table } from '../Components/AboutComponents';
 
+// Icons
+// import { FaNodeJs } from 'react-icons/fa';
+import {
+  FaNodeJs,
+  FaReact,
+  FaDocker,
+  FaGitAlt,
+  FaVuejs,
+  FaPython,
+  FaPhp,
+  FaSass
+} from 'react-icons/fa';
+import { BiCodeAlt } from 'react-icons/bi';
+import { SiMysql, SiMongodb, SiRedux } from 'react-icons/si';
+
 const Main = styled.main`
   margin: 0 auto;
   width: min(90%, 700px);
@@ -44,6 +59,28 @@ function About() {
       </Section>
       <Section>
         <H1>My Skill...</H1>
+        <P
+          style={{
+            display: 'flex',
+            fontSize: '40px',
+            columnGap: '20px',
+            rowGap: '20px',
+            flexWrap: 'wrap'
+          }}
+        >
+          <BiCodeAlt title="web" />
+          <FaNodeJs title="node.js" />
+          <FaReact title="react.js" />
+          <FaVuejs title="vue.js" />
+          <SiRedux title="redux" />
+          <FaSass title="sass" />
+          <FaDocker title="docker" />
+          <FaGitAlt title="git" />
+          <SiMongodb title="mongodb" />
+          <SiMysql title="mysql" />
+          <FaPython title="python3" />
+          <FaPhp title="php" />
+        </P>
         <P>
           You can watch my works in my <a href="https://github.com/mirumodapon">GitHub</a>.
         </P>
