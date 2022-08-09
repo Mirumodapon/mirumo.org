@@ -18,7 +18,7 @@ function App() {
         <Route path="/link" element={<Link />} />
         <Route path="/tools" element={<Tools />} />
         <Route path="/sm" element={<ScreenMessage />} />
-        <Route path="/qr/*" element={<QRcode />} />
+        <Route path="/qr" element={<QRcode />} />
       </Routes>
     </BrowserRouter>
   );
