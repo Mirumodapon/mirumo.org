@@ -17,13 +17,20 @@ const Section = styled.section`
 // Components
 import QRcode from 'qrcode.react';
 
-function QRcodeGenerate() {
+function QRcodeGenerate({ renderAs, size, bgColor, fgColor, includeMargin }) {
   const [data, setData] = useState('');
   const handleChanges = (e) => setData(e.target.value);
 
   return (
     <Section>
-      <QRcode value={data} />
+      <QRcode
+        value={data}
+        renderAs={renderAs}
+        size={size}
+        bgColor={bgColor}
+        fgColor={fgColor}
+        includeMargin={includeMargin}
+      />
       <textarea value={data} onChange={handleChanges} />
     </Section>
   );
