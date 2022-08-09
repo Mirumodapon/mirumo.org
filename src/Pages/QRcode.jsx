@@ -25,6 +25,8 @@ const Main = styled.main`
       border: 0;
       background: transparent;
       font-size: 32px;
+      color: inherit;
+      cursor: pointer;
     }
   }
 `;
