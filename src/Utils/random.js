@@ -6,7 +6,8 @@ const symbol = '~!@#$%^&*()_+{}|:"<>?`-=[]\\;\'./';
 const { max, min, random, pow, floor } = Math;
 
 export function number(_from, _to, type = 'int', repeat = true, count = 1, point = 2) {
-  if (!_from || !_to) throw 'Please enter the range.';
+  if (_from !== 0 && !_form) throw 'Please enter the range.';
+  if (_to !== 0 && !_to) throw 'Please enter the range.';
   const [from, to] = [min(_from, _to), max(_from, _to)];
 
   const payload = [];

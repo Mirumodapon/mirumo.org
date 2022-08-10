@@ -3,3 +3,5 @@ Disallow: /link
 Disallow: /tools
 Disallow: /sm
 Disallow: /qr
+Disallow: /random/*
+Disallow: /ran/*
