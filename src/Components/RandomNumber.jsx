@@ -43,7 +43,7 @@ const Result = styled(Popup)`
     border-radius: 10px;
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 50px);
+    grid-template-columns: repeat(auto-fill, 100px);
     justify-content: center;
     align-items: flex-start;
     column-gap: 15px;
@@ -77,11 +77,15 @@ function RandomNumber() {
     <Section>
       <p>
         <label>From: </label>
-        <input type="number" value={from} onChange={(e) => setFrom(parseInt(e.target.value), 10)} />
+        <input
+          type="number"
+          value={from}
+          onChange={(e) => setFrom(parseFloat(e.target.value), 10)}
+        />
       </p>
       <p>
         <label>To: </label>
-        <input type="number" value={to} onChange={(e) => setTo(parseInt(e.target.value), 10)} />
+        <input type="number" value={to} onChange={(e) => setTo(parseFloat(e.target.value), 10)} />
       </p>
       <p>
         <label>Type: </label>

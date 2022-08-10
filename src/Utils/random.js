@@ -1,7 +1,7 @@
-const abc = 'abcdefghijklmnopqrstuvwxyz';
-const ABC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const _123 = '0123456789';
-const symbol = '~!@#$%^&*()_+{}|:"<>?`-=[]\\;\'./';
+export const abc = 'abcdefghijklmnopqrstuvwxyz';
+export const ABC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+export const _123 = '0123456789';
+export const symbol = '~!@#$%^&*()_+{}|:"<>?`-=[]\\;\'./';
 
 const { max, min, random, pow, floor } = Math;
 
@@ -45,6 +45,8 @@ export function string(payload, length, count) {
     }
     return str;
   };
+
+  if (payload === '') return [];
 
   const arr = [];
   for (let i = 0; i < count; ++i) {
