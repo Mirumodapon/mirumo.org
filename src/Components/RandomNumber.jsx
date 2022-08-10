@@ -50,6 +50,12 @@ const Result = styled(Popup)`
     row-gap: 25px;
     overflow-y: auto;
     font-size: 24px;
+    span {
+      cursor: pointer;
+      :hover {
+        color: red;
+      }
+    }
   }
 
   &-overlay {
@@ -71,6 +77,10 @@ function RandomNumber() {
   const handleGenerate = () => {
     setResult(randomNumber(from, to, type, repeat, count, point));
     setOpen(true);
+  };
+
+  const handleCopy = (e) => {
+    navigator.clipboard.writeText(e.target.innerHTML);
   };
 
   return (
@@ -119,7 +129,9 @@ function RandomNumber() {
       <Result open={open} onClose={() => setOpen(false)} closeOnDocumentClick modal nested>
         <section className="modal">
           {result.map((x, i) => (
-            <span key={i}>{x}</span>
+            <span key={i} onClick={handleCopy}>
+              {x}
+            </span>
           ))}
         </section>
       </Result>

@@ -45,9 +45,9 @@ const Result = styled(Popup)`
       white-space: nowrap;
       overflow-x: hidden;
       text-overflow: ellipsis;
+      cursor: pointer;
       :hover {
         color: red;
-        cursor: pointer;
       }
     }
   }
@@ -81,6 +81,10 @@ function RandomString() {
       )
     );
     setOpen(true);
+  };
+
+  const handleCopy = (e) => {
+    navigator.clipboard.writeText(e.target.innerHTML);
   };
 
   return (
@@ -118,7 +122,9 @@ function RandomString() {
       <Result open={open} onClose={() => setOpen(false)} closeOnDocumentClick modal nested>
         <section className="modal">
           {result.map((x, i) => (
-            <span key={i}>{x}</span>
+            <span key={i} onClick={handleCopy}>
+              {x}
+            </span>
           ))}
         </section>
       </Result>
