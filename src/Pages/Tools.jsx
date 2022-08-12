@@ -9,6 +9,7 @@ import IconLink from '../Components/IconLink';
 import { MdEditNote, MdQrCode } from 'react-icons/md';
 import { GiPerspectiveDiceSixFacesRandom } from 'react-icons/gi';
 import { BsMarkdown } from 'react-icons/bs';
+import { GrDocumentPdf } from 'react-icons/gr';
 
 const Main = styled.main`
   width: 80%;
@@ -30,6 +31,7 @@ function Tools() {
         <IconLink text="Screen Message" Icon={MdEditNote} to="/sm" />
         <IconLink text="QRcode" Icon={MdQrCode} to="/qr" />
         <IconLink text="Random" Icon={GiPerspectiveDiceSixFacesRandom} to="/ran" />
+        <IconLink text="Pdf Viewer " Icon={GrDocumentPdf} to="/pdf-viewer" />
         {/* <IconLink text="Markdown" Icon={BsMarkdown} to="#" /> */}
       </GridSection>
     </Main>

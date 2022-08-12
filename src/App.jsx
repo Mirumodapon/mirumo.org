@@ -9,6 +9,7 @@ import Tools from './Pages/Tools';
 import ScreenMessage from './Pages/ScreenMessage';
 import QRcode from './Pages/QRcode';
 import Random from './Pages/Random';
+import PdfSide from './Pages/PdfSlide';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/sm" element={<ScreenMessage />} />
         <Route path="/qr" element={<QRcode />} />
         <Route path="/ran/*" element={<Random />} />
+        <Route path="/pdf-viewer" element={<PdfSide />} />
       </Routes>
     </BrowserRouter>
   );

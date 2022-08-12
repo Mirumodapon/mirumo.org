@@ -6,5 +6,6 @@ mkdir ./dist/qr && cp ./dist/index.html ./dist/qr/index.html
 mkdir ./dist/ran && cp ./dist/index.html ./dist/ran/index.html
 mkdir ./dist/ran/s && cp ./dist/index.html ./dist/ran/s/index.html
 mkdir ./dist/ran/n && cp ./dist/index.html ./dist/ran/n/index.html
+mkdir ./dist/pdf-viewer && cp ./dist/index.html ./dist/pdf-viewer/index.html
 
 echo mirumo.org > ./dist/CNAME
