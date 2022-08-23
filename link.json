@@ -11,7 +11,13 @@
         },
         {
           "label": "網路實驗室",
-          "url": "http://netlab.nptucsai.org",
+          "url": "http://163.24.242.176",
+          "iat": 0,
+          "exp": 0
+        },
+        {
+          "label": "網站技術分享暨課程",
+          "url": "https://mirumodapon.github.io/nptucsai-111-web_course/",
           "iat": 0,
           "exp": 0
         }
