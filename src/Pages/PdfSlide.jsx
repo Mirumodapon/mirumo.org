@@ -5,6 +5,7 @@ import 'pdfjs-dist/build/pdf.worker.entry';
 
 // Icons
 import { GrFormPreviousLink, GrFormNextLink } from 'react-icons/gr';
+import { BiFullscreen } from 'react-icons/bi';
 
 const Main = styled.main`
   width: 100vw;
@@ -54,6 +55,14 @@ const Bar = styled.div`
   column-gap: 20px;
 `;
 
+const Options = styled.div`
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 20px;
+  font-size: 20px;
+`;
+
 function PdfSlide({ pdf }) {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
@@ -74,6 +83,7 @@ function PdfSlide({ pdf }) {
         break;
     }
   };
+  const handleFullscreen = (e) => document.body.requestFullscreen();
 
   const onDocumentLoadSuccess = (e) => setNumPages(e.numPages);
   const onLoadError = (e) => setFile(null);
@@ -124,6 +134,9 @@ function PdfSlide({ pdf }) {
         )}
         <GrFormNextLink onClick={handleNextPage} />
       </Bar>
+      <Options>
+        <BiFullscreen onClick={handleFullscreen} color="black" />
+      </Options>
     </Main>
   );
 }
