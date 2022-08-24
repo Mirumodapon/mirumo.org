@@ -54,10 +54,10 @@ const Bar = styled.div`
   column-gap: 20px;
 `;
 
-function PdfSlide() {
+function PdfSlide({ pdf }) {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState(pdf ?? null);
 
   const onDocumentLoadSuccess = (e) => setNumPages(e.numPages);
   const onLoadError = (e) => setFile(null);
