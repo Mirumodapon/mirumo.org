@@ -59,6 +59,22 @@ function PdfSlide({ pdf }) {
   const [pageNumber, setPageNumber] = useState(1);
   const [file, setFile] = useState(pdf ?? null);
 
+  const handleKeydown = ({ keyCode }) => {
+    switch (keyCode) {
+      case 32:
+      case 39:
+      case 40:
+        handleNextPage();
+        break;
+      case 37:
+      case 38:
+        handlePreviousPage();
+        break;
+      default:
+        break;
+    }
+  };
+
   const onDocumentLoadSuccess = (e) => setNumPages(e.numPages);
   const onLoadError = (e) => setFile(null);
 
@@ -82,7 +98,7 @@ function PdfSlide({ pdf }) {
   };
 
   return (
-    <Main>
+    <Main tabIndex={0} onKeyDown={handleKeydown}>
       <Document
         file={file}
         onLoadSuccess={onDocumentLoadSuccess}
