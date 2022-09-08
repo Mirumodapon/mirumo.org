@@ -53,8 +53,12 @@ function About() {
         <Ul>
           <li>哈佛文理補習班 數學科/自然科 助教 (2019.7-2019.8)</li>
           <li>SITCON Develop Group (2020-2021)</li>
-          <li>110年度智慧創新跨域人才培育計畫--物聯網應用微學程 基礎 python 講師 (2021)</li>
-          <li>110年度智慧創新跨域人才培育計畫--物聯網應用微學程 Arduino 研習課程講師 (2021)</li>
+          <li>國立屏東大學 資訊科學系 資安團隊 助教 (2021-now)</li>
+          <li>國立屏東大學 資訊科學系辦公室 網管 (2021-now)</li>
+          <li>國立屏東大學 資訊學院 基礎 python 講師 (2021)</li>
+          <li>國立屏東大學 資訊學院 Arduino 研習課程講師 (2021)</li>
+          <li>SITCON Service Group (2021-2022)</li>
+          <li>國立屏東大學 行銷與流通管理學系 受邀擔任 python 講師 (2022)</li>
         </Ul>
       </Section>
       <Section>
