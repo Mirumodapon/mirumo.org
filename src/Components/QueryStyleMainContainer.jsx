@@ -8,14 +8,14 @@ const _Main = styled.main`
 `;
 
 function Main({ children, ...props }) {
-  const [color, setColor] = useState('black');
-  const [background, setBackground] = useState('white');
+  const [color, setColor] = useState('white');
+  const [background, setBackground] = useState('black');
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
 
-    setBackground(query.get('background') || query.get('b') || 'white');
-    setColor(query.get('color') || query.get('c') || 'black');
+    setBackground(query.get('background') || query.get('b') || 'black');
+    setColor(query.get('color') || query.get('c') || 'white');
   }, []);
 
   return <_Main {...{ ...props, color, background }}>{children}</_Main>;
