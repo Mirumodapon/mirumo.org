@@ -59,6 +59,7 @@ function About() {
           <li>國立屏東大學 資訊學院 Arduino 研習課程講師 (2021)</li>
           <li>SITCON Service Group (2021-2022)</li>
           <li>國立屏東大學 行銷與流通管理學系 受邀擔任 python 講師 (2022)</li>
+          <li>國立屏東大學 電腦科學系 網站技術分享課程 講師 (2022)</li>
         </Ul>
       </Section>
       <Section>
