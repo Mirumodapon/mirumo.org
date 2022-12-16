@@ -14,8 +14,12 @@ function Main({ children, ...props }) {
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
 
-    setBackground(query.get('background') || query.get('b') || 'black');
-    setColor(query.get('color') || query.get('c') || 'white');
+    const mode = window.localStorage.getItem('mode');
+
+    setBackground(
+      query.get('background') || query.get('b') || (mode === 'light' ? '#fff' : '#000')
+    );
+    setColor(query.get('color') || query.get('c') || (mode === 'light' ? '#000' : '#fff'));
   }, []);
 
   return <_Main {...{ ...props, color, background }}>{children}</_Main>;

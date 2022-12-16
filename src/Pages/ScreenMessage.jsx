@@ -70,9 +70,13 @@ function ScreenMessage() {
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
 
+    const mode = window.localStorage.getItem('mode');
+
     if (textarea.current) textarea.current.value = query.get('text') || query.get('t') || '';
-    setBackground(query.get('background') || query.get('b') || 'white');
-    setColor(query.get('color') || query.get('c') || 'black');
+    setBackground(
+      query.get('background') || query.get('b') || (mode === 'light' ? '#fff' : '#000')
+    );
+    setColor(query.get('color') || query.get('c') || (mode === 'light' ? '#000' : '#fff'));
 
     calculate();
   }, []);
