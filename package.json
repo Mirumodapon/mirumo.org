@@ -10,6 +10,7 @@
     "postbuild": "bash fix-path.sh"
   },
   "dependencies": {
+    "luxon": "^3.1.1",
     "qrcode.react": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
