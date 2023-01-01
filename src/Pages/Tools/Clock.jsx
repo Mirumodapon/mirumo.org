@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ReactjsPopup from 'reactjs-popup';
 import { DateTime } from 'luxon';
+import { useSelector } from 'react-redux';
 
 // Components
 import QueryStyleMainContainer from '../../Components/QueryStyleMainContainer';
@@ -15,6 +16,8 @@ const Main = styled(QueryStyleMainContainer)`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: ${(props) => props[props.theme].background};
+  color: ${(props) => props[props.theme].content};
 
   time {
     white-space: pre;
@@ -40,6 +43,17 @@ const Main = styled(QueryStyleMainContainer)`
   }
 `;
 
+Main.defaultProps = {
+  dark: {
+    content: 'white',
+    background: '#191919'
+  },
+  light: {
+    content: '#191919',
+    background: 'white'
+  }
+};
+
 const Popup = styled(ReactjsPopup)`
   &-overlay {
     background-color: rgba(150, 150, 150, 0.6);
@@ -50,6 +64,9 @@ const Popup = styled(ReactjsPopup)`
     border: 2px solid black;
     border-radius: 10px;
     padding: 5px;
+    position: absolute !important;
+    right: 20px;
+    bottom: 30px;
   }
 
   &-content > div {
@@ -83,6 +100,7 @@ function Clock() {
   const [open, setOpen] = useState(false);
   const [info, setInfo] = useState(false);
   const [time, setTime] = useState(DateTime.now().toFormat(format));
+  const mode = useSelector((s) => s.themeMode);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -95,7 +113,7 @@ function Clock() {
   });
 
   return (
-    <Main family={family} size={size}>
+    <Main family={family} size={size} theme={mode}>
       <time>{time}</time>
       <AiOutlineSetting className="setting" onClick={(e) => setOpen(true)} />
       <Popup
