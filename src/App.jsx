@@ -10,11 +10,10 @@ import Home from './Pages/Home';
 import About from './Pages/About';
 import Link from './Pages/Link';
 import Tools from './Pages/Tools';
-import ScreenMessage from './Pages/ScreenMessage';
-import QRcode from './Pages/QRcode';
-import Random from './Pages/Random';
-import PdfSide from './Pages/PdfSlide';
-import Clock from './Pages/Clock';
+import ScreenMessage from './Pages/Tools/ScreenMessage';
+import QRcode from './Pages/Tools/QRcode';
+import Random from './Pages/Tools/Random';
+import Clock from './Pages/Tools/Clock';
 
 function App() {
   return (
@@ -28,7 +27,6 @@ function App() {
           <Route path="/sm" element={<ScreenMessage />} />
           <Route path="/qr" element={<QRcode />} />
           <Route path="/ran/*" element={<Random />} />
-          <Route path="/pdf-viewer" element={<PdfSide />} />
           <Route path="/clock" element={<Clock />} />
         </Routes>
       </BrowserRouter>

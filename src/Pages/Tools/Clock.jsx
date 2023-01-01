@@ -4,7 +4,7 @@ import ReactjsPopup from 'reactjs-popup';
 import { DateTime } from 'luxon';
 
 // Components
-import QueryStyleMainContainer from '../Components/QueryStyleMainContainer';
+import QueryStyleMainContainer from '../../Components/QueryStyleMainContainer';
 // Icon
 import { AiOutlineSetting } from 'react-icons/ai';
 import { BsInfoCircleFill } from 'react-icons/bs';

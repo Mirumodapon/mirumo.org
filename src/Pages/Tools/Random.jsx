@@ -7,8 +7,8 @@ import { TiSortNumerically } from 'react-icons/ti';
 import { AiOutlineFieldString } from 'react-icons/ai';
 
 // Components
-import RandomNumber from '../Components/RandomNumber';
-import RandomString from '../Components/RandomString';
+import RandomNumber from '../../Components/RandomNumber';
+import RandomString from '../../Components/RandomString';
 
 const Main = styled.main`
   width: 80%;

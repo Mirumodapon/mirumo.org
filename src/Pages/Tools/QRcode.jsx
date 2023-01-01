@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 // Components
 import popup from 'reactjs-popup';
-import QRcodeGenerate from '../Components/QRcodeGenerate';
+import QRcodeGenerate from '../../Components/QRcodeGenerate';
 
 // Icons
 import { AiOutlineQrcode, AiOutlineSetting } from 'react-icons/ai';
