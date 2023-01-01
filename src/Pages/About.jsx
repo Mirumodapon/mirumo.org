@@ -26,6 +26,11 @@ const Main = styled.main`
   font-size: 10px;
   background: ${(props) => props[props.theme].background};
   color: ${(props) => props[props.theme].content};
+
+  & a {
+    color: ${(props) => props[props.theme].content};
+  }
+
   @media screen and (max-width: 700px) {
     font-size: 9px;
   }
