@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 
 // Icons
-import { FaTelegram, FaInstagram, FaGithub } from 'react-icons/fa';
+import IG from './icons/Instagram';
+import Github from './icons/Github';
+import Tg from './icons/Telegram';
 
 const Main = styled.main`
   width: 100vw;
@@ -30,7 +32,6 @@ const Main = styled.main`
     column-gap: 25px;
     a {
       color: ${(props) => props[props.theme].content};
-      font-size: 36px;
       text-decoration: none;
     }
     img {
@@ -57,14 +58,14 @@ function Cover() {
       <img src="/avatar.png" alt="avatar" />
       <section>
         <a href="https://github.mirumo.org">
-          <FaGithub />
+          <Github theme={mode} />
         </a>
 
         <a href="https://tg.mirumo.org">
-          <FaTelegram />
+          <Tg theme={mode} />
         </a>
         <a href="https://ig.mirumo.org">
-          <FaInstagram />
+          <IG theme={mode} />
         </a>
       </section>
     </Main>
