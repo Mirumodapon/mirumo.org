@@ -9,12 +9,13 @@ const modeSlice = createSlice({
     changeMode: (state, _) => {
       let mode;
 
-      if (state === 'dark') mode = 'dark';
-      else if (state === 'light') mode = 'light';
+      if (state === 'dark') mode = 'light';
+      else if (state === 'light') mode = 'dark';
       else mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
       state = mode;
       window.localStorage.setItem('themeMode', mode);
+      return mode;
     }
   }
 });
