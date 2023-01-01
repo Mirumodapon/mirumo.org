@@ -11,8 +11,6 @@ import About from './Pages/About';
 import Link from './Pages/Link';
 import Tools from './Pages/Tools';
 import ScreenMessage from './Pages/Tools/ScreenMessage';
-import QRcode from './Pages/Tools/QRcode';
-import Random from './Pages/Tools/Random';
 import Clock from './Pages/Tools/Clock';
 
 function App() {
@@ -25,8 +23,6 @@ function App() {
           <Route path="/link" element={<Link />} />
           <Route path="/tools" element={<Tools />} />
           <Route path="/sm" element={<ScreenMessage />} />
-          <Route path="/qr" element={<QRcode />} />
-          <Route path="/ran/*" element={<Random />} />
           <Route path="/clock" element={<Clock />} />
         </Routes>
       </BrowserRouter>

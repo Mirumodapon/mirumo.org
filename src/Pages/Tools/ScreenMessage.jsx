@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 const Textarea = styled.textarea`
   position: fixed;
@@ -66,11 +67,10 @@ function ScreenMessage() {
   };
 
   const handleTextareaChange = (e) => calculate();
+  const mode = useSelector((s) => s.themeMode);
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
-
-    const mode = window.localStorage.getItem('mode');
 
     if (textarea.current) textarea.current.value = query.get('text') || query.get('t') || '';
     setBackground(
@@ -79,7 +79,7 @@ function ScreenMessage() {
     setColor(query.get('color') || query.get('c') || (mode === 'light' ? '#000' : '#fff'));
 
     calculate();
-  }, []);
+  }, [mode]);
 
   return (
     <>

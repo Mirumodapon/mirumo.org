@@ -55,8 +55,6 @@ function Tools() {
       </h1>
       <GridSection>
         <IconLink text="Screen Message" Icon={MdEditNote} to="/sm" />
-        <IconLink text="QRcode" Icon={MdQrCode} to="/qr" />
-        <IconLink text="Random" Icon={GiPerspectiveDiceSixFacesRandom} to="/ran" />
         <IconLink text="Clock" Icon={AiOutlineClockCircle} to="/clock" />
       </GridSection>
     </Main>
