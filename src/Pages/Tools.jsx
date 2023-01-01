@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { changeMode } from '../Store/mode.slice';
 // Components
 import { GridSection } from '../Components/GridBox';
 import IconLink from '../Components/IconLink';
 
 // Icons
-import { MdLightMode, MdDarkMode, MdEditNote, MdQrCode } from 'react-icons/md';
+import { MdEditNote, MdQrCode, MdDarkMode, MdLightMode } from 'react-icons/md';
 import { GiPerspectiveDiceSixFacesRandom } from 'react-icons/gi';
-import { BsMarkdown } from 'react-icons/bs';
-import { GrDocumentPdf } from 'react-icons/gr';
 import { AiOutlineClockCircle } from 'react-icons/ai';
 
 const Main = styled.main`
@@ -21,9 +20,9 @@ const Main = styled.main`
     if (props.mode === 'light')
       return `
       background: #fff;
-      color: #000;
+      color: #191919;
     `;
-    return `background: #000;
+    return `background: #191919;
       color: #fff;`;
   }}
 
@@ -31,7 +30,7 @@ const Main = styled.main`
     width: 80%;
     margin: auto;
     padding: 30px 20px 10px;
-    border-bottom: 0.5px solid ${(props) => (props.mode === 'light' ? '#000' : '#fff')};
+    border-bottom: 0.5px solid ${(props) => (props.mode === 'light' ? '#191919' : '#fff')};
     display: flex;
     justify-content: space-between;
   }
@@ -42,28 +41,22 @@ const Main = styled.main`
 `;
 
 function Tools() {
-  const [mode, setMode] = useState(window.localStorage.getItem('mode'));
+  const mode = useSelector((s) => s.themeMode);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    window.localStorage.setItem('mode', mode);
-  }, [mode]);
-
-  const changeMode = (e) => {
-    if (mode === 'dark') setMode('light');
-    else setMode('dark');
-  };
   return (
     <Main mode={mode}>
       <h1>
         <span>Tools</span>
-        <span onClick={changeMode}>{mode !== 'light' ? <MdLightMode /> : <MdDarkMode />}</span>
+        <span onClick={(e) => dispatch(changeMode())} className="themeTrigger">
+          {mode === 'dark' ? <MdLightMode /> : ''}
+          {mode === 'light' ? <MdDarkMode /> : ''}
+        </span>
       </h1>
       <GridSection>
         <IconLink text="Screen Message" Icon={MdEditNote} to="/sm" />
         <IconLink text="QRcode" Icon={MdQrCode} to="/qr" />
         <IconLink text="Random" Icon={GiPerspectiveDiceSixFacesRandom} to="/ran" />
-        {/* <IconLink text="Pdf Viewer " Icon={GrDocumentPdf} to="/pdf-viewer" /> */}
-        {/* <IconLink text="Markdown" Icon={BsMarkdown} to="#" /> */}
         <IconLink text="Clock" Icon={AiOutlineClockCircle} to="/clock" />
       </GridSection>
     </Main>
