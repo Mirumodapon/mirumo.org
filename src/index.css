@@ -11,3 +11,9 @@ body {
   font-family: var(--font-family);
   overflow-x: hidden;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #191919;
+  }
+}

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 // Components
 import { Section, P, Ul, H1, Table } from '../Components/AboutComponents';
@@ -23,6 +24,8 @@ const Main = styled.main`
   margin: 0 auto;
   width: min(90%, 700px);
   font-size: 10px;
+  background: ${(props) => props[props.theme].background};
+  color: ${(props) => props[props.theme].content};
   @media screen and (max-width: 700px) {
     font-size: 9px;
   }
@@ -31,9 +34,24 @@ const Main = styled.main`
   }
 `;
 
+Main.defaultProps = {
+  dark: {
+    content: 'white',
+    background: '#191919'
+  },
+  light: {
+    content: '#191919',
+    background: 'white'
+  }
+};
+
 function About() {
+  const mode = useSelector((s) => s.themeMode);
+  useEffect(() => {
+    document.body.style.background = mode === 'dark' ? '#191919' : 'white';
+  }, [mode]);
   return (
-    <Main>
+    <Main theme={mode}>
       <Section>
         <H1>Website of 咪路</H1>
         <P>Hi! My name is 林冠渝, as know as 咪路.</P>

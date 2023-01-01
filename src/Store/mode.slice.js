@@ -15,6 +15,7 @@ const modeSlice = createSlice({
 
       state = mode;
       window.localStorage.setItem('themeMode', mode);
+      document.body.style.backgroundColor = mode === 'dark' ? '#191919' : 'white';
       return mode;
     }
   }
