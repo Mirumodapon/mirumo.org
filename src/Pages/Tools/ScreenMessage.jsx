@@ -1,44 +1,43 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
 
-const Textarea = styled.textarea`
-  position: fixed;
-  top: 0;
-  left: 0;
+const Main = styled.main`
   width: 100vw;
   height: 100vh;
-  font-family: sans-serif;
-  text-align: center;
-  padding: 0;
-  border: 0;
-  margin: 0;
-  overflow: hidden;
-  resize: none;
-  ${(props) => `
-  color: ${props.fontColor};
-  background: ${props.background}`}
-`;
 
-const Span = styled.span`
-  position: fixed;
-  top: 0;
-  left: 0;
-  font-size: 30px;
-  font-family: sans-serif;
-  border: 0;
-  margin: 0;
-  padding: 2px 10px;
-  visibility: hidden;
-  white-space: pre;
+  textarea {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    font-family: sans-serif;
+    text-align: center;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    overflow: hidden;
+    resize: none;
+  }
+
+  span {
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: 30px;
+    font-family: sans-serif;
+    border: 0;
+    margin: 0;
+    padding: 2px 10px;
+    visibility: hidden;
+    white-space: pre;
+  }
 `;
 
 function ScreenMessage() {
+  const [text, setText] = useState('');
   const textarea = useRef(null);
   const span = useRef(null);
-
-  const [color, setColor] = useState('black');
-  const [background, setBackground] = useState('white');
 
   const calculate = () => {
     const spanElement = span.current;
@@ -47,10 +46,9 @@ function ScreenMessage() {
     const screenHeight = window.innerHeight;
 
     if (spanElement && textareaElement) {
-      const value = textareaElement.value;
-      spanElement.textContent = value;
+      spanElement.innerHTML = text;
 
-      if (value[value.length - 1] === '\n' || value === '') spanElement.innerHTML += '.';
+      if (text[text.length - 1] == '\n' || text == '') spanElement.innerHTML += '.';
 
       const rate = Math.min(
         screenWidth / spanElement.offsetWidth,
@@ -66,32 +64,20 @@ function ScreenMessage() {
     }
   };
 
-  const handleTextareaChange = (e) => calculate();
-  const mode = useSelector((s) => s.themeMode);
-
   useEffect(() => {
-    const query = new URLSearchParams(window.location.search);
-
-    if (textarea.current) textarea.current.value = query.get('text') || query.get('t') || '';
-    setBackground(
-      query.get('background') || query.get('b') || (mode === 'light' ? '#fff' : '#000')
-    );
-    setColor(query.get('color') || query.get('c') || (mode === 'light' ? '#000' : '#fff'));
-
     calculate();
-  }, [mode]);
+  }, [text]);
 
   return (
-    <>
-      <Textarea
+    <Main>
+      <textarea
         ref={textarea}
-        onChange={handleTextareaChange}
         autoFocus
-        fontColor={color}
-        background={background}
-      ></Textarea>
-      <Span ref={span}></Span>
-    </>
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      ></textarea>
+      <span ref={span}></span>
+    </Main>
   );
 }
 
