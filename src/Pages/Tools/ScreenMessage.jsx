@@ -1,97 +1,196 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeText } from '../..//Store/sm.slice';
+import ReactjsPopup from 'reactjs-popup';
 
-const Textarea = styled.textarea`
-  position: fixed;
-  top: 0;
-  left: 0;
+import { AiOutlineSetting } from 'react-icons/ai';
+
+const Main = styled.main`
   width: 100vw;
   height: 100vh;
-  font-family: sans-serif;
-  text-align: center;
-  padding: 0;
-  border: 0;
-  margin: 0;
   overflow: hidden;
-  resize: none;
-  ${(props) => `
-  color: ${props.fontColor};
-  background: ${props.background}`}
+
+  textarea {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    border: 0;
+    margin: 0;
+
+    text-align: ${({ position: [_, pos] }) => pos};
+    font-family: sans-serif;
+    overflow: hidden;
+    resize: none;
+
+    font-size: ${({ fontSize }) => fontSize};
+    padding: ${({ padding, position }) => (position[0] === 'center' ? padding : 0)};
+    background-color: ${({ background }) => background};
+    color: ${({ fontColor }) => fontColor};
+  }
+
+  span {
+    font-size: 30px;
+    border: 0;
+    margin: 0;
+
+    visibility: hidden;
+    top: 0;
+    z-index: 9999;
+
+    white-space: pre;
+    background: gold;
+    opacity: 0.4;
+  }
+
+  svg {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    font-size: 30px;
+    color: ${({ fontColor }) => fontColor};
+    opacity: 0;
+    transition: opacity 2s ease-in-out 0.1s;
+  }
+
+  & > svg:hover {
+    opacity: 1;
+    transition: none;
+  }
 `;
 
-const Span = styled.span`
-  position: fixed;
-  top: 0;
-  left: 0;
-  font-size: 30px;
-  font-family: sans-serif;
-  border: 0;
-  margin: 0;
-  padding: 2px 10px;
-  visibility: hidden;
-  white-space: pre;
+const Popup = styled(ReactjsPopup)`
+  &-content {
+    position: absolute !important;
+    right: 20px;
+    bottom: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    background: white;
+
+    .setting-popup > div {
+      display: table-row;
+      line-height: 30px;
+    }
+
+    .setting-popup > div :is(label, input, textarea) {
+      display: table-cell;
+    }
+
+    .setting-popup > div label {
+      text-align: right;
+    }
+
+    .setting-popup :is(input, textarea):focus {
+      outline: none;
+    }
+  }
 `;
 
 function ScreenMessage() {
-  const textarea = useRef(null);
-  const span = useRef(null);
+  const text = useSelector((s) => s.sm.message);
+  const [test, setTest] = useState('');
 
-  const [color, setColor] = useState('black');
-  const [background, setBackground] = useState('white');
+  const [fontSize, setFontSize] = useState(0);
+  const [padding, setPadding] = useState(0);
 
-  const calculate = () => {
-    const spanElement = span.current;
-    const textareaElement = textarea.current;
-    const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
+  const spanRef = useRef(0);
 
-    if (spanElement && textareaElement) {
-      const value = textareaElement.value;
-      spanElement.textContent = value;
+  const mode = useSelector((s) => s.themeMode);
+  const [background, setBackground] = useState(mode === 'dark' ? '#191919' : '#ffffff');
+  const [fontColor, setFontColor] = useState(mode === 'dark' ? '#ffffff' : '#000000');
+  const [position, setPosition] = useState(['center', 'center']);
 
-      if (value[value.length - 1] === '\n' || value === '') spanElement.innerHTML += '.';
+  const [settingPanel, triggerSettingPanel] = useState(false);
+  const dispatch = useDispatch();
 
-      const rate = Math.min(
-        screenWidth / spanElement.offsetWidth,
-        screenHeight / spanElement.offsetHeight
-      );
-      textareaElement.style.fontSize = `${Math.floor(rate * 30)}px`;
+  useEffect(
+    function () {
+      if (text == '' || text.slice(-1) == '\n') setTest(text + '.');
+      else setTest(text);
+    },
+    [text]
+  );
 
-      const paddingTopBottom = Math.floor(
-        (screenHeight - Math.ceil(spanElement.offsetHeight * rate)) / 2
-      );
+  useEffect(
+    function () {
+      const { offsetWidth, offsetHeight } = spanRef.current;
+      const { innerWidth, innerHeight } = window;
+      const rate = Math.min(innerHeight / offsetHeight, innerWidth / offsetWidth);
+      setFontSize(`${Math.floor(rate * 29.5)}px`);
 
-      textareaElement.style.padding = `${paddingTopBottom}px 0`;
-    }
+      const padding = (innerHeight - Math.ceil(rate * offsetHeight)) / 2;
+      setPadding(`${padding}px 0;`);
+    },
+    [test]
+  );
+
+  const handlePositionChange = (e) => {
+    const { value } = e.target;
+    setPosition(value.split(' '));
   };
 
-  const handleTextareaChange = (e) => calculate();
-  const mode = useSelector((s) => s.themeMode);
-
-  useEffect(() => {
-    const query = new URLSearchParams(window.location.search);
-
-    if (textarea.current) textarea.current.value = query.get('text') || query.get('t') || '';
-    setBackground(
-      query.get('background') || query.get('b') || (mode === 'light' ? '#fff' : '#000')
-    );
-    setColor(query.get('color') || query.get('c') || (mode === 'light' ? '#000' : '#fff'));
-
-    calculate();
-  }, [mode]);
-
   return (
-    <>
-      <Textarea
-        ref={textarea}
-        onChange={handleTextareaChange}
+    <Main
+      fontSize={fontSize}
+      padding={padding}
+      background={background}
+      fontColor={fontColor}
+      position={position}
+    >
+      <textarea
         autoFocus
-        fontColor={color}
-        background={background}
-      ></Textarea>
-      <Span ref={span}></Span>
-    </>
+        value={text}
+        onChange={(e) => dispatch(changeText({ message: e.target.value }))}
+        spellCheck="false"
+      ></textarea>
+      <span className="test" ref={spanRef}>
+        {test}
+      </span>
+      <AiOutlineSetting onClick={(e) => triggerSettingPanel(true)} />
+      <Popup
+        className="setting"
+        open={settingPanel}
+        onClose={(e) => triggerSettingPanel(false)}
+        closeOnDocumentClick
+        position="right center"
+        nested
+        modal
+      >
+        <div className="setting-popup">
+          <div>
+            <label htmlFor="background">Background:</label>
+            <input
+              id="background"
+              type="color"
+              value={background}
+              onChange={(e) => setBackground(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="font-color">FontColor: </label>
+            <input
+              id="font-color"
+              type="color"
+              value={fontColor}
+              onChange={(e) => setFontColor(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="position">Position</label>
+            <select id="position" onChange={handlePositionChange} value={position.join(' ')}>
+              <option value="top right">top right</option>
+              <option value="top center">top center</option>
+              <option value="top left">top left</option>
+              <option value="center right">center right</option>
+              <option value="center center">center center</option>
+              <option value="center left">center left</option>
+            </select>
+          </div>
+        </div>
+      </Popup>
+    </Main>
   );
 }
 
