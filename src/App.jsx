@@ -12,6 +12,7 @@ import Link from './Pages/Link';
 import Tools from './Pages/Tools';
 import ScreenMessage from './Pages/Tools/ScreenMessage';
 import Clock from './Pages/Tools/Clock';
+import Alarm from './Pages/Tools/Alarm';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/tools" element={<Tools />} />
           <Route path="/sm" element={<ScreenMessage />} />
           <Route path="/clock" element={<Clock />} />
+          <Route path="/alarm" element={<Alarm />} />
         </Routes>
       </BrowserRouter>
     </Provider>

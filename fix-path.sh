@@ -3,5 +3,6 @@ mkdir ./dist/link && cp ./dist/index.html ./dist/link/index.html
 mkdir ./dist/tools && cp ./dist/index.html ./dist/tools/index.html
 mkdir ./dist/sm && cp ./dist/index.html ./dist/sm/index.html
 mkdir ./dist/clock && cp ./dist/index.html ./dist/clock/index.html
+mkdir ./dist/alarm && cp ./dist/index.html ./dist/alarm/index.html
 
 echo mirumo.org > ./dist/CNAME

@@ -7,7 +7,7 @@ import { GridSection } from '../Components/GridBox';
 import IconLink from '../Components/IconLink';
 
 // Icons
-import { MdEditNote, MdQrCode, MdDarkMode, MdLightMode } from 'react-icons/md';
+import { MdEditNote, MdQrCode, MdDarkMode, MdLightMode, MdAlarm } from 'react-icons/md';
 import { GiPerspectiveDiceSixFacesRandom } from 'react-icons/gi';
 import { AiOutlineClockCircle } from 'react-icons/ai';
 
@@ -56,6 +56,7 @@ function Tools() {
       <GridSection>
         <IconLink text="Screen Message" Icon={MdEditNote} to="/sm" />
         <IconLink text="Clock" Icon={AiOutlineClockCircle} to="/clock" />
+        <IconLink text="Alarm" Icon={MdAlarm} to="/alarm" />
       </GridSection>
     </Main>
   );
