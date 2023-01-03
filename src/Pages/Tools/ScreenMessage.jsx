@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeText } from '../..//Store/sm.slice';
 import ReactjsPopup from 'reactjs-popup';
 
 import { AiOutlineSetting } from 'react-icons/ai';
@@ -88,7 +89,7 @@ const Popup = styled(ReactjsPopup)`
 `;
 
 function ScreenMessage() {
-  const [text, setText] = useState('');
+  const text = useSelector((s) => s.sm.message);
   const [test, setTest] = useState('');
 
   const [fontSize, setFontSize] = useState(0);
@@ -102,10 +103,11 @@ function ScreenMessage() {
   const [position, setPosition] = useState(['center', 'center']);
 
   const [settingPanel, triggerSettingPanel] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(
     function () {
-      if (text.slice(-1) == '\n' || test == '') setTest(text + '.');
+      if (text == '' || text.slice(-1) == '\n') setTest(text + '.');
       else setTest(text);
     },
     [text]
@@ -140,7 +142,7 @@ function ScreenMessage() {
       <textarea
         autoFocus
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={(e) => dispatch(changeText({ message: e.target.value }))}
         spellCheck="false"
       ></textarea>
       <span className="test" ref={spanRef}>
