@@ -17,13 +17,11 @@ const alarmSlice = createSlice({
       state.alarms.splice(index, 1);
     },
     addAlarm(state, { payload: { time } }) {
-      try {
-        DateTime.fromISO(time);
-        state.alarms = [...state.alarms, time];
-      } catch (error) {
-        alert('Invalid time.');
-      }
+      const valid = DateTime.fromISO(time).isValid;
 
+      if (!valid) return alert('Invalid Time!');
+
+      state.alarms = [...state.alarms, time];
       state.alarms = state.alarms.sort((x, y) => {
         const timeX = DateTime.fromISO(x);
         const timeY = DateTime.fromISO(y);
